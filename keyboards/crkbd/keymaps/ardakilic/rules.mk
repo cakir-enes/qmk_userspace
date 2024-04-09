@@ -13,3 +13,8 @@ SPACE_CADET_ENABLE = no
 GRAVE_ESCAPE_ENABLE = no
 MOUSEKEY_ENABLE = no
 # Size optimisations END
+
+# Select the Bootloader
+# https://github.com/qmk/qmk_firmware/blob/master/platforms/chibios/converters/elite_c_to_rp2040_ce/converter.mk
+# https://github.com/qmk/qmk_firmware/blob/master/platforms/chibios/converters/promicro_to_rp2040_ce/converter.mk
+CONVERT_TO = elite_pi
