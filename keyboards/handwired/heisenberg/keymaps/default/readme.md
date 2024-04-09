@@ -1,1 +1,1 @@
-# The default keymap for Heisenberg
+# The default keymap for haisenborg

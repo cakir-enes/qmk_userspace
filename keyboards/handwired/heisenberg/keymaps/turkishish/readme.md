@@ -1,5 +1,5 @@
-# The Turkishish keymap for Heisenberg
+# The Turkishish keymap for haisenborg
 
 You can flash the "turkishish" layout (which I'm currently using) like:
 
-	make handwired/heisenberg:turkishish
+	make handwired/haisenborg:turkishish

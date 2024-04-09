@@ -16,7 +16,7 @@
 #include QMK_KEYBOARD_H
 
 
-enum heisenberg_layers {
+enum haisenborg_layers {
   _QWERTY,
   _LOWER,
   _RAISE,
@@ -46,7 +46,7 @@ enum heisenberg_layers {
 #define NUMBER_SIGN RALT(KC_3)
 #define LOCKSCREEN LCTL(LSFT(KC_PWR)) // Screen Lock shortcut for OSX
 
-/* 
+/*
 // Unicode Turkish characters, in case it's needed
 enum {
     TR_C, // ç
@@ -214,7 +214,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 };
 
-// Enable the adjust layer when both lower and 
+// Enable the adjust layer when both lower and
 layer_state_t layer_state_set_user(layer_state_t state) {
   return update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
 }
