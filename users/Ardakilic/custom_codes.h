@@ -3,7 +3,7 @@
  * These keycodes are mostly for Turkish layout
  */
 
-// KC_NONUS_BSLASH (\|) is equivalent to ["é] key in Turkish keyboards.
+// KC_NONUS_BACKSLASH (\|) is equivalent to ["é] key in Turkish keyboards.
 // KC_GRV (~ `) is equivalent to [<>|] key in Turkish keyboards.
 // KC_SCLN is Turkish s [şŞ] key
 // KC_QUOT is Turkish i [iİ] key

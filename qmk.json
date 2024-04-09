@@ -6,8 +6,8 @@
         ["horizon", "ardakilic"],
         ["horizon", "ardakilic_trackball"],
         ["peej/lumberjack", "ardakilic"],
-        ["planck", "ardakilic"],
-        ["planck", "ardakilic_grid"],
+        ["planck/rev6", "ardakilic"],
+        ["planck/rev6", "ardakilic_grid"],
         ["skywatch", "arda"],
         ["tada68", "ardakilic"],
         ["yakamoz", "ardakilic"]

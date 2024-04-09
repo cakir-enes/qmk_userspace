@@ -41,7 +41,7 @@ enum trackball_keycodes {
 #endif
 // END pimoroni trackball keycodes
 
-// KC_NONUS_BSLASH (\|) is equivalent to ["é] key in Turkish keyboards.
+// KC_NONUS_BACKSLASH (\|) is equivalent to ["é] key in Turkish keyboards.
 // KC_GRV (~ `) is equivalent to [<>|] key in Turkish keyboards.
 // KC_SCLN is Turkish s [şŞ] key
 // KC_QUOT is Turkish i [iİ] key
@@ -140,11 +140,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //  ╰──────╯             │TAB/* ├──────╮                ╭──────┤BKSP/*│             ╰──────╯
 //                       ╰──────┤LWR/, ├───────┬────────┤RSE/" ├──────╯
 //                              ╰──────┤SPACE/*│ ENT/*  ├──────╯
-//                                     ╰───────┴────────╯ 
+//                                     ╰───────┴────────╯
 
   [_QWERTY] = LAYOUT(
-    KC_Q, KC_W, KC_E, KC_R, KC_T,                   KC_Y, KC_U, KC_I, KC_O, KC_P,      
-    KC_A, KC_S, KC_D, KC_F, KC_G,                   KC_H, KC_J, KC_K, KC_L, KC_SCLN, 
+    KC_Q, KC_W, KC_E, KC_R, KC_T,                   KC_Y, KC_U, KC_I, KC_O, KC_P,
+    KC_A, KC_S, KC_D, KC_F, KC_G,                   KC_H, KC_J, KC_K, KC_L, KC_SCLN,
     TH_LSFT_Z, KC_X, KC_C, KC_V, KC_B,              KC_N, KC_M, KC_COMM, KC_DOT, TH_RSFT_DOT,
        LAYER_TAB, LAYER_LOWER, LAYER_SPACE, LAYER_ENTER, LAYER_RAISE, LAYER_BACKSPACE
   ),
@@ -155,17 +155,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //  │ BRI+ ├──────┼──────┼──────┼──────┤                ├──────┼──────┼──────┼──────┤      │
 //  ├──────┤ SAT- │ HUE- │ ANI- │      │                │BllHui│BllWht│BllDec│      ├──────┤
 //  │ BRI- ├──────┼──────┼──────┼──────┤                ├──────┼──────┼──────┼──────┤      │
-//  ├──────┤      │      │      │BllScr│                │REBOOT│ BOOT │EE_CLR│DEBUG ├──────┤
+//  ├──────┤      │      │      │BllScr│                │REBOOT│ BOOT │QK_CLEAR_EEPROM│DEBUG ├──────┤
 //  │      ├──────┴──────┼──────┼──────╯                ╰──────┼──────┼──────┴──────┤      │
 //  ╰──────╯             │      ├──────╮                ╭──────┤      │             ╰──────╯
 //                       ╰──────┤      ├───────┬────────┤      ├──────╯
 //                              ╰──────┤       │        ├──────╯
-//                                     ╰───────┴────────╯ 
+//                                     ╰───────┴────────╯
 
   [_TAB] = LAYOUT(
     RGB_VAI,   RGB_SAI, RGB_HUI,  RGB_MOD,    RGB_TOG,            _______,  _______,  _______,  _______,     _______,
-    RGB_VAD,   RGB_SAD, RGB_HUD,  RGB_RMOD,   _______,            BALL_HUI, BALL_WHT, BALL_DEC, _______,     _______,     
-    _______,   KC_BTN3, KC_BTN2,  KC_BTN1,    BALL_SCR,           QK_RBT,   QK_BOOT,   EE_CLR,  DB_TOGG,     _______,     
+    RGB_VAD,   RGB_SAD, RGB_HUD,  RGB_RMOD,   _______,            BALL_HUI, BALL_WHT, BALL_DEC, _______,     _______,
+    _______,   KC_BTN3, KC_BTN2,  KC_BTN1,    BALL_SCR,           QK_RBT,   QK_BOOT,   QK_CLEAR_EEPROM,  DB_TOGG,     _______,
                               _______,   _______,    _______,  _______,   _______,   _______
   ),
 
@@ -181,10 +181,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //  ╰──────╯             │      ├──────╮                ╭──────┤  ">" │             ╰──────╯
 //                       ╰──────┤      ├───────┬────────┤  "<" ├──────╯
 //                              ╰──────┤       │ ENTER  ├──────╯
-//                                     ╰───────┴────────╯ 
+//                                     ╰───────┴────────╯
 [_LOWER] = LAYOUT(
-    KC_AT, _______, _______, LSFT(KC_2), KC_NONUS_BACKSLASH,      KC_ASTR, KC_LPRN, KC_UNDS, KC_PLUS, KC_BSPC,      
-    _______, _______, _______, BACKSLASH, VERTICAL_PIPE,            CURLY_OPEN, CURLY_CLOSE, KC_LBRC, KC_RBRC, KC_QUOT, 
+    KC_AT, _______, _______, LSFT(KC_2), KC_NONUS_BACKSLASH,      KC_ASTR, KC_LPRN, KC_UNDS, KC_PLUS, KC_BSPC,
+    _______, _______, _______, BACKSLASH, VERTICAL_PIPE,            CURLY_OPEN, CURLY_CLOSE, KC_LBRC, KC_RBRC, KC_QUOT,
     KC_CAPS, _______, _______, KC_GRV, LSFT(KC_GRV),                SQUARE_OPEN, SQUARE_CLOSE, DOLLAR_SIGN, NUMBER_SIGN, KC_EQL,
                                 _______, _______, _______, KC_ENT, KC_GRV, LSFT(KC_GRV)
   ),
@@ -200,10 +200,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //  ╰──────╯             │      ├──────╮                ╭──────┤      │             ╰──────╯
 //                       ╰──────┤ LGUI ├───────┬────────┤      ├──────╯
 //                              ╰──────┤       │        ├──────╯
-//                                     ╰───────┴────────╯ 
+//                                     ╰───────┴────────╯
 [_SPACE] = LAYOUT(
-    KC_EXLM, KC_AT, KC_HASH, KC_DLR, KC_PERC,                    KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN,      
-    _______, _______, _______, _______, _______,                 KC_LEFT, KC_DOWN, KC_UP, KC_RGHT, KC_BSPC, 
+    KC_EXLM, KC_AT, KC_HASH, KC_DLR, KC_PERC,                    KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN,
+    _______, _______, _______, _______, _______,                 KC_LEFT, KC_DOWN, KC_UP, KC_RGHT, KC_BSPC,
     KC_LSFT, _______, _______, _______, _______,                 KC_MS_BTN1, KC_MS_BTN2, BALL_SCR, BALL_MCL, _______,
                                     _______, KC_LGUI, _______, _______, _______, _______
   ),
@@ -223,7 +223,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_ENT] = LAYOUT(
     _______, KC_F9, KC_F10, KC_F11, KC_F12,             KC_MPRV, KC_PGUP, KC_UP, KC_MUTE, KC_MPLY,
-    _______, KC_F5, KC_F6, KC_F7, KC_F8,                KC_HOME, KC_LEFT, KC_DOWN, KC_RGHT, KC_END, 
+    _______, KC_F5, KC_F6, KC_F7, KC_F8,                KC_HOME, KC_LEFT, KC_DOWN, KC_RGHT, KC_END,
     _______, KC_F1, KC_F2, KC_F3, KC_F4,                KC_MNXT, KC_PGDN, _______, KC_VOLD, KC_VOLU,
                         _______, _______, KC_ENT, _______, KC_BSPC, _______
   ),
@@ -239,9 +239,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //  ╰──────╯             │      ├──────╮                ╭──────┤ BKSP │             ╰──────╯
 //                       ╰──────┤      ├───────┬────────┤      ├──────╯
 //                              ╰──────┤       │  ENT   ├──────╯
-//                                     ╰───────┴────────╯ 
+//                                     ╰───────┴────────╯
 [_RAISE] = LAYOUT(
-    KC_1, KC_2,   KC_3,   KC_4,   KC_5,                             KC_6,   KC_7,   KC_8,   KC_9,   KC_0,     
+    KC_1, KC_2,   KC_3,   KC_4,   KC_5,                             KC_6,   KC_7,   KC_8,   KC_9,   KC_0,
     _______, _______, _______, _______, _______,                    KC_MINS, KC_EQL, BACKSLASH, VERTICAL_PIPE, KC_BSLS,
     _______, _______, _______, _______, _______,                    NUMBER_SIGN, KC_NUBS, TILDE, BACKTICK, KC_GRV,
                                 _______, _______, _______, KC_ENT, _______, KC_BSPC
@@ -261,15 +261,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //  ╰──────╯             │      ├──────╮                ╭──────┤      │             ╰──────╯
 //                       ╰──────┤      ├───────┬────────┤   O  ├──────╯
 //                              ╰──────┤  SPC  │  BKSP  ├──────╯
-//                                     ╰───────┴────────╯ 
+//                                     ╰───────┴────────╯
 [_BSPC] = LAYOUT(
-    _______, _______, _______, _______, _______,                    KC_PSLS, KC_P7, KC_P8, KC_P9, KC_PMNS,      
-    _______, _______, _______, _______, _______,                    KC_PDOT, KC_P4, KC_P5, KC_P6, KC_PPLS, 
+    _______, _______, _______, _______, _______,                    KC_PSLS, KC_P7, KC_P8, KC_P9, KC_PMNS,
+    _______, _______, _______, _______, _______,                    KC_PDOT, KC_P4, KC_P5, KC_P6, KC_PPLS,
     _______, _______, _______, _______, _______,                    KC_SLSH, KC_P1, KC_P2, KC_P3, KC_PEQL,
                                     _______, _______, KC_SPC, KC_BSPC, KC_P0, _______
   ),
-          
- 
+
+
 
 };
 
@@ -317,20 +317,20 @@ bool render_status(void) {
             break;
         case 4:
             oled_write_P(PSTR("ENTER\n"), false);
-            break; 
+            break;
         case 5:
             oled_write_P(PSTR("RAISE\n"), false);
             break;
         case 6:
             oled_write_P(PSTR("BKSPC\n"), false);
-            break;                                                      
+            break;
         default:
             // Or use the write_ln shortcut over adding '\n' to the end of your string
             oled_write_ln_P(PSTR("¯\\_(ツ)_/¯"), false);
             // oled_write_ln_P(PSTR("Undefined"), false);
 
     }
- 
+
     // Host Keyboard LED Status
     led_t led_state = host_keyboard_led_state();
     oled_write_P(led_state.caps_lock ? PSTR("\rCaps: ON  ") : PSTR("\rCaps: OFF  "), false);
@@ -344,7 +344,7 @@ bool oled_task_kb(void) {
     }
     if (is_keyboard_master()) {
         render_status();  // Renders the current keyboard state (layer, lock, caps, scroll, etc)
-    } 
+    }
     return false;
 }
 #endif
@@ -363,7 +363,7 @@ report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
     if (set_scrolling) {
         mouse_report.h = mouse_report.x;
         mouse_report.v = mouse_report.y;
-        mouse_report.x = mouse_report.y = 0; 
+        mouse_report.x = mouse_report.y = 0;
     }
     return mouse_report;
 }

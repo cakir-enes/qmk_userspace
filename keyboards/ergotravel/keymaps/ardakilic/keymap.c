@@ -26,7 +26,7 @@ enum ergotravel_layers {
   _NUMPAD
 };
 
-// KC_NONUS_BSLASH (\|) is equivalent to ["é] key in Turkish keyboards.
+// KC_NONUS_BACKSLASH (\|) is equivalent to ["é] key in Turkish keyboards.
 // KC_GRV (~ `) is equivalent to [<>|] key in Turkish keyboards.
 // KC_SCLN is Turkish s [şŞ] key
 // KC_QUOT is Turkish i [iİ] key
@@ -200,7 +200,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   // EepRST | BotLdr | Debug | Reboot
   [_ADJUST] = LAYOUT(
-     _______, _______,  _______, _______, _______, _______, _______,  /*|*/       _______,  _______, _______,  EE_CLR,  QK_BOOT, DB_TOGG, QK_RBT,
+     _______, _______,  _______, _______, _______, _______, _______,  /*|*/       _______,  _______, _______,  QK_CLEAR_EEPROM,  QK_BOOT, DB_TOGG, QK_RBT,
      _______, _______,  _______, _______, _______, _______, _______,  /*|*/       _______,  _______, _______, _______, _______, _______, _______,
      _______, _______,  _______, _______, _______, _______, _______,  /*|*/       _______,  _______, _______, _______, _______, _______, _______,
      _______, _______, _______, _______, _______, _______,            /*|*/                 _______, _______, _______, _______, _______, _______

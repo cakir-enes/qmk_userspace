@@ -27,7 +27,7 @@ enum horizon_layers {
 };
 
 
-// KC_NONUS_BSLASH (\|) is equivalent to ["é] key in Turkish keyboards.
+// KC_NONUS_BACKSLASH (\|) is equivalent to ["é] key in Turkish keyboards.
 // KC_GRV (~ `) is equivalent to [<>|] key in Turkish keyboards.
 // KC_SCLN is Turkish s [şŞ] key
 // KC_QUOT is Turkish i [iİ] key
@@ -151,7 +151,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * `-------------------------------------------------------------------------------------------------'
      */
     [_SODA] = LAYOUT(
-        EE_CLR,  QK_BOOT, DB_TOGG, QK_RBT, _______, _______, _______, _______, KC_UP, _______, _______, _______,
+        QK_CLEAR_EEPROM,  QK_BOOT, DB_TOGG, QK_RBT, _______, _______, _______, _______, KC_UP, _______, _______, _______,
         _______, _______, _______, _______, _______, _______, _______, KC_LEFT, KC_DOWN, KC_RGHT, _______, KC_MUTE,
         _______, _______, _______, _______, _______, _______, KC_MS_BTN1, KC_MS_BTN1, _______, _______, KC_MNXT, KC_VOLD, KC_VOLU, KC_MPLY,
         _______, _______, _______, _______, _______, _______, KC_SCRL, KC_MS_BTN2, _______, _______, _______, _______, KC_BRMD, KC_BRMU
