@@ -45,9 +45,9 @@ enum ergotravel_layers {
 #define TILDE RALT(KC_RBRC)
 #define NUMBER_SIGN RALT(KC_3)
 #define AT_SIGN RALT(KC_Q)
-#define LOCKSCREEN LCTL(LSFT(KC_POWER)) // Screen Lock shortcut for OSX
+#define LOCKSCREEN LCTL(LSFT(KC_PWR)) // Screen Lock shortcut for OSX
 
-/* 
+/*
 // Unicode Turkish characters, in case it's needed
 enum {
     TR_C, // ç
@@ -98,8 +98,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_QWERTY] = LAYOUT(
     KC_TAB, KC_Q,KC_W, KC_E, KC_R, KC_T, KC_GRV,                   /*|*/         KC_AT, KC_Y, KC_U, KC_I, KC_O, KC_P, KC_BSPC,
     LT(_NUMPAD, KC_ESC),KC_A,KC_S,KC_D,KC_F,KC_G,AT_SIGN,           /*|*/         DOLLAR_SIGN, KC_H, KC_J, KC_K, KC_L, KC_SCLN, KC_QUOT,
-    LSFT_T(KC_CAPS),KC_Z,KC_X,KC_C,KC_V,KC_B,KC_ENT,                /*|*/         LT(_SPACE, KC_SPC), KC_N,  KC_M,  KC_COMM, KC_DOT, KC_SLSH, KC_SFTENT,
-    KC_LCTL, LT(_SODA, KC_GRV), KC_LALT, KC_LGUI, LT(_LOWER, KC_BSLS),LT(_SPACE, KC_SPC),    /*|*/      KC_ENT, LT(_RAISE, KC_NONUS_BSLASH), KC_LEFT, KC_DOWN, KC_UP, KC_RGHT
+    LSFT_T(KC_CAPS),KC_Z,KC_X,KC_C,KC_V,KC_B,KC_ENT,                /*|*/         LT(_SPACE, KC_SPC), KC_N,  KC_M,  KC_COMM, KC_DOT, KC_SLSH, RSFT_T(KC_ENT),
+    KC_LCTL, LT(_SODA, KC_GRV), KC_LALT, KC_LGUI, LT(_LOWER, KC_BSLS),LT(_SPACE, KC_SPC),    /*|*/      KC_ENT, LT(_RAISE, KC_NONUS_BACKSLASH), KC_LEFT, KC_DOWN, KC_UP, KC_RGHT
   ),
 
 /* Lower
@@ -118,7 +118,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_HOME,    /*|*/        KC_PGUP, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_BSPC,
     KC_F1,    KC_F2,   KC_F3,   KC_F4,   KC_F5, KC_F6,    KC_END ,    /*|*/        KC_PGDN, _______, KC_UNDS, KC_PLUS, KC_LBRC, KC_RBRC, KC_EQL,
     KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_DEL,     /*|*/        KC_BSPC, _______,DOLLAR_SIGN, CURLY_OPEN, CURLY_CLOSE, KC_GRV, LSFT(KC_GRV),
-    RGB_MOD, _______, _______, _______, _______, KC_BSPC,             /*|*/        KC_DEL, _______, SQUARE_OPEN, SQUARE_CLOSE, LSFT(KC_2), KC_NONUS_BSLASH 
+    RGB_MOD, _______, _______, _______, _______, KC_BSPC,             /*|*/        KC_DEL, _______, SQUARE_OPEN, SQUARE_CLOSE, LSFT(KC_2), KC_NONUS_BACKSLASH
   ),
 
 
@@ -198,8 +198,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, _______, _______, _______, _______, _______,             /*|*/       _______, KC_P0, KC_P0, KC_SLSH, KC_PDOT, KC_PEQL
   ),
 
+  // EepRST | BotLdr | Debug | Reboot
   [_ADJUST] = LAYOUT(
-     _______, _______,  _______, _______, _______, _______, _______,  /*|*/       _______,  _______, _______, _______, _______, EEP_RST, RESET,
+     _______, _______,  _______, _______, _______, _______, _______,  /*|*/       _______,  _______, _______,  EE_CLR,  QK_BOOT, DB_TOGG, QK_RBT,
      _______, _______,  _______, _______, _______, _______, _______,  /*|*/       _______,  _______, _______, _______, _______, _______, _______,
      _______, _______,  _______, _______, _______, _______, _______,  /*|*/       _______,  _______, _______, _______, _______, _______, _______,
      _______, _______, _______, _______, _______, _______,            /*|*/                 _______, _______, _______, _______, _______, _______
@@ -208,7 +209,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
 
-// Enable the adjust layer when both lower and 
+// Enable the adjust layer when both lower and raise are pressed
 layer_state_t layer_state_set_user(layer_state_t state) {
   return update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
 }
