@@ -2,6 +2,14 @@
     "userspace_version": "1.0",
     "build_targets": [
         ["crkbd", "ardakilic"],
-        ["ergotravel", "ardakilic"]
+        ["ergotravel", "ardakilic"],
+        ["horizon", "ardakilic"],
+        ["horizon", "ardakilic_trackball"],
+        ["peej/lumberjack", "ardakilic"],
+        ["planck", "ardakilic"],
+        ["planck", "ardakilic_grid"],
+        ["skywatch", "arda"],
+        ["tada68", "ardakilic"],
+        ["yakamoz", "ardakilic"]
     ]
 }
