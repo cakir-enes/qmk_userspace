@@ -1,7 +1,7 @@
 #define I2C_DRIVER I2CD0
 // the bottom pins of Splinky are connected for the serial pins
-#define I2C1_SCL_PIN GP13
-#define I2C1_SDA_PIN GP12
+#define I2C0_SCL_PIN GP13
+#define I2C0_SDA_PIN GP12
 
 
 #define CIRQUE_PINNACLE_DIAMETER_MM 40
