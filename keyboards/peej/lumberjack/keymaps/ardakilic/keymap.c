@@ -34,7 +34,7 @@
 #define VERTICAL_PIPE RALT(KC_EQL)
 #define BACKTICK RALT(KC_BSLS)
 #define TILDE RALT(KC_RBRC)
-#define NUMBER_SIGN RALT(KC_3)
+#define HASHTAG RALT(KC_3)
 #define LOCKSCREEN LCTL(LSFT(KC_PWR)) // Screen Lock shortcut for OSX
 
 /*
@@ -124,7 +124,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_LOWER] = LAYOUT_ortho_5x12(
     _______,KC_F1,KC_F2,KC_F3,KC_F4,KC_F5,              /*|*/   _______,_______,BACKSLASH,VERTICAL_PIPE,KC_MINS,KC_EQL,
-    _______,KC_F6,KC_F7,KC_F8,KC_F9,KC_F10,             /*|*/   _______,NUMBER_SIGN,KC_GRV,RALT(KC_LBRC),RALT(KC_RBRC),LSFT(KC_0),
+    _______,KC_F6,KC_F7,KC_F8,KC_F9,KC_F10,             /*|*/   _______,HASHTAG,KC_GRV,RALT(KC_LBRC),RALT(KC_RBRC),LSFT(KC_0),
     _______,KC_F11,KC_F12,_______,_______,_______,      /*|*/   KC_MINS,KC_UNDS,BACKTICK,KC_LBRC,KC_RBRC,KC_PLUS,
     _______,_______,_______,_______,_______,_______,    /*|*/   _______,DOLLAR_SIGN,CURLY_OPEN,CURLY_CLOSE,KC_NONUS_BACKSLASH,LSFT(KC_NONUS_BACKSLASH),
     _______,_______,_______,_______,_______,KC_ENT,     /*|*/   KC_BSPC,_______,SQUARE_OPEN,SQUARE_CLOSE,LSFT(KC_2),KC_GRV

@@ -58,7 +58,7 @@ enum trackball_keycodes {
 #define VERTICAL_PIPE RALT(KC_EQL)
 #define BACKTICK RALT(KC_BSLS)
 #define TILDE RALT(KC_RBRC)
-#define NUMBER_SIGN RALT(KC_3)
+#define HASHTAG RALT(KC_3)
 #define LOCKSCREEN LCTL(LSFT(KC_PWR)) // Screen Lock shortcut for OSX
 
 // Layer Keys
@@ -185,7 +185,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_LOWER] = LAYOUT(
     KC_AT, _______, _______, LSFT(KC_2), KC_NONUS_BACKSLASH,      KC_ASTR, KC_LPRN, KC_UNDS, KC_PLUS, KC_BSPC,
     _______, _______, _______, BACKSLASH, VERTICAL_PIPE,            CURLY_OPEN, CURLY_CLOSE, KC_LBRC, KC_RBRC, KC_QUOT,
-    KC_CAPS, _______, _______, KC_GRV, LSFT(KC_GRV),                SQUARE_OPEN, SQUARE_CLOSE, DOLLAR_SIGN, NUMBER_SIGN, KC_EQL,
+    KC_CAPS, _______, _______, KC_GRV, LSFT(KC_GRV),                SQUARE_OPEN, SQUARE_CLOSE, DOLLAR_SIGN, HASHTAG, KC_EQL,
                                 _______, _______, _______, KC_ENT, KC_GRV, LSFT(KC_GRV)
   ),
 
@@ -243,7 +243,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_RAISE] = LAYOUT(
     KC_1, KC_2,   KC_3,   KC_4,   KC_5,                             KC_6,   KC_7,   KC_8,   KC_9,   KC_0,
     _______, _______, _______, _______, _______,                    KC_MINS, KC_EQL, BACKSLASH, VERTICAL_PIPE, KC_BSLS,
-    _______, _______, _______, _______, _______,                    NUMBER_SIGN, KC_NUBS, TILDE, BACKTICK, KC_GRV,
+    _______, _______, _______, _______, _______,                    HASHTAG, KC_NUBS, TILDE, BACKTICK, KC_GRV,
                                 _______, _______, _______, KC_ENT, _______, KC_BSPC
   ),
 

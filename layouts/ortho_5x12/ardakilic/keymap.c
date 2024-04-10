@@ -14,71 +14,17 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include QMK_KEYBOARD_H
 
-// KC_NONUS_BACKSLASH (\|) is equivalent to [<>|] key in Turkish Windows keyboards.
-// KC_GRV (~ `) is equivalent to ["é] key in Turkish Windows keyboards.
-// KC_SCLN is Turkish s [şŞ] key
-// KC_QUOT is Turkish i [iİ] key
-// KC_COMM is Turkish o [öÖ] key
-// KC_DOT is Turkish c [çÇ] key
+#include "ardakilic.h"
 
-// Custom shortcuts specific to Turkish layout
-#define CURLY_OPEN RALT(KC_7)
-#define CURLY_CLOSE RALT(KC_0)
-#define SQUARE_OPEN RALT(KC_8)
-#define SQUARE_CLOSE RALT(KC_9)
-#define DOLLAR_SIGN RALT(KC_4)
-#define BACKSLASH RALT(KC_MINS)
-#define VERTICAL_PIPE RALT(KC_EQL)
-#define BACKTICK RALT(KC_BSLS)
-#define TILDE RALT(KC_RBRC)
-#define HASHTAG RALT(KC_3)
-#define LOCKSCREEN LCTL(LSFT(KC_PWR)) // Screen Lock shortcut for OSX
-
-/*
-// Unicode Turkish characters, in case it's needed
-enum {
-    TR_C, // ç
-    TR_C_L, // Ç
-    TR_I, // ı
-    TR_I_L, // İ
-    TR_G, // ğ
-    TR_G_L, // Ğ
-    TR_S, // ş
-    TR_S_L, // Ş
-    TR_U, // ü
-    TR_U_L, // Ü
-    TR_O, // ö
-    TR_O_L, // Ö
-};
-
-// clang-format off
-const uint32_t PROGMEM unicode_map[] = {
-    [TR_C] = 0x00c7,
-    [TR_C_L] = 0x00e7,
-    [TR_I] = 0x0130,
-    [TR_I_L] = 0x0131,
-    [TR_G] = 0x011e,
-    [TR_G_L] = 0x011f,
-    [TR_S] = 0x015e,
-    [TR_S_L] = 0x015f,
-    [TR_U] = 0x00dc,
-    [TR_U_L] = 0x00fc,
-    [TR_O] = 0x00d6,
-    [TR_O_L] = 0x00f6,
-};
-// clang-format on
-*/
-
-enum lumberjack_layers {
-  _QWERTY = 0,
+enum keyboard_layers {
+  _QWERTY,
   _LOWER,
   // _RAISE,
-  _NUMPAD,
   _ADJUST,
   // _SPACE,
   // _SODA,
+  _NUMPAD,
   _MAC
 };
 
@@ -98,7 +44,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * | Ctrl |Adj|<>| Win  | Alt  |Lowr|,|Space | |Space | AltGR| Left | Down |  Up  | Rght |
  * `-----------------------------------------' `-----------------------------------------'
  */
-[_QWERTY] = LAYOUT_woodpecker_grid(
+[_QWERTY] = LAYOUT_ortho_5x12(
     KC_GRV,KC_1,KC_2,KC_3,KC_4,KC_5,                    /*|*/   KC_6,KC_7,KC_8,KC_9,KC_0,KC_BSPC,
     KC_TAB,KC_Q,KC_W,KC_E,KC_R,KC_T,                    /*|*/   KC_Y,KC_U,KC_I,KC_O,KC_P,KC_DEL,
     LT(_NUMPAD, KC_ESC),KC_A,KC_S,KC_D,KC_F,KC_G,       /*|*/   KC_H,KC_J,KC_K,KC_L,KC_SCLN,KC_QUOT,
@@ -120,7 +66,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |      |      |      |      |      | Entr | | BkSp |      |  "[" |  "]" |  '   |  "   |
  * `-----------------------------------------' `-----------------------------------------'
  */
-[_LOWER] = LAYOUT_woodpecker_grid(
+[_LOWER] = LAYOUT_ortho_5x12(
     _______,KC_F1,KC_F2,KC_F3,KC_F4,KC_F5,              /*|*/   _______,_______,BACKSLASH,VERTICAL_PIPE,KC_MINS,KC_EQL,
     _______,KC_F6,KC_F7,KC_F8,KC_F9,KC_F10,             /*|*/   _______,HASHTAG,KC_GRV,RALT(KC_LBRC),RALT(KC_RBRC),LSFT(KC_0),
     _______,KC_F11,KC_F12,_______,_______,_______,      /*|*/   KC_MINS,KC_UNDS,BACKTICK,KC_LBRC,KC_RBRC,KC_PLUS,
@@ -136,14 +82,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------| |------+------+------+------+------+------|
  * |      | ACL0 |L-clck|  Up  |R-clck|Scrl U| |      |   7  |   8  |   9  |   +  |  =   |
  * |------+------+------+------+------+------| |------+------+------+------+------+------|
- * |      | ACL1 | Left | Down |Right |Scrl D| |      |   4  |   5  |   6  |   +  |  ,   |
+ * |==XX==| ACL1 | Left | Down |Right |Scrl D| |      |   4  |   5  |   6  |   +  |  ,   |
  * |------+------+------+------+------+------| |------+------+------+------+------+------|
  * |      | ACL2 | VOLU | PREV |PAUSE | NEXT | |      |   1  |   2  |   3  |Enter |      |
  * |------+------+------+------+------+------| |------+------+------+------+------+------|
  * |      |      | VOLD | MUTE | Bksp | Del  | |Enter |Space |   0  |   .  |Enter |      |
  * `-----------------------------------------' `-----------------------------------------'
  */
-[_NUMPAD] = LAYOUT_woodpecker_grid(
+[_NUMPAD] = LAYOUT_ortho_5x12(
     KC_GRV,_______,_______,KC_BTN3,_______,_______,     /*|*/   _______,KC_NUM,KC_PSLS,KC_PAST,KC_PMNS,KC_BSPC,
     _______,KC_ACL0,KC_BTN1,KC_MS_U,KC_BTN2,KC_WH_U,    /*|*/   _______,KC_P7,KC_P8,KC_P9,KC_PPLS,KC_PEQL,
     _______,KC_ACL1,KC_MS_L,KC_MS_D,KC_MS_R,KC_WH_D,    /*|*/   _______,KC_P4,KC_P5,KC_P6,KC_PPLS,KC_PDOT,
@@ -153,7 +99,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Adjust
  * ,-----------------------------------------. ,-----------------------------------------.
- * |EepRST| Reset|      |      |      |      | | macOS|      |      |      |      |LckOSX|
+ * |EepRST| Reset|      |      |      |      | |      |      |      |      |      |LckOSX|
  * |------+------+------+------+------+------| |------+------+------+------+------+------|
  * |      |      |      |      |      |      | |      |      |      |      |      |      |
  * |------+------+------+------+------+------| |------+------+------+------+------+------|
@@ -161,19 +107,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------| |------+------+------+------+------+------|
  * |CpsLck|      |      |      |      |      | |      |      |      |      |      |      |
  * |------+------+------+------+------+------| |------+------+------+------+------+------|
- * |      |      |      |      |      |      | |      |      |      |      |      |      |
+ * |==XX==| macOS|      |      |      |      | |      |      |      |      |      |      |
  * `-----------------------------------------' `-----------------------------------------'
  */
-[_ADJUST] = LAYOUT_woodpecker_grid(
-    EE_CLR,QK_BOOT,_______,_______,_______,_______,     /*|*/   TG(_MAC),_______,_______,_______,_______,LOCKSCREEN,
+[_ADJUST] = LAYOUT_ortho_5x12(
+    QK_CLEAR_EEPROM,QK_BOOT,_______,_______,_______,_______,     /*|*/   _______,_______,_______,_______,_______,LOCKSCREEN,
     _______,_______,_______,_______,_______,_______,    /*|*/   _______,_______,_______,_______,_______,_______,
     _______,_______,_______,_______,_______,_______,    /*|*/   _______,_______,_______,_______,_______,_______,
     KC_CAPS,_______,_______,_______,_______,_______,    /*|*/   _______,_______,_______,_______,_______,_______,
-    _______,_______,_______,_______,_______,_______,    /*|*/   _______,_______,_______,_______,_______,_______
+    _______,TG(_MAC),_______,_______,_______,_______,    /*|*/   _______,_______,_______,_______,_______,_______
 ),
 
 /* MAC
- * This layout toggles Win/CMD and Left Alt keys's positions for Win and Mac compatibility
+ * This layout toggles Win/CMD and Left Alt keys's positions for Win and Mac intercompatibility
  * ,-----------------------------------------. ,-----------------------------------------.
  * |      |      |      |      |      |      | |      |      |      |      |      |      |
  * |------+------+------+------+------+------| |------+------+------+------+------+------|
@@ -186,7 +132,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |      |      | Alt  | CMD  |      |      | |      |      |      |      |      |      |
  * `-----------------------------------------' `-----------------------------------------'
  */
-[_MAC] = LAYOUT_woodpecker_grid(
+[_MAC] = LAYOUT_ortho_5x12(
     _______,_______,_______,_______,_______,_______,    /*|*/   _______,_______,_______,_______,_______,_______,
     _______,_______,_______,_______,_______,_______,    /*|*/   _______,_______,_______,_______,_______,_______,
     _______,_______,_______,_______,_______,_______,    /*|*/   _______,_______,_______,_______,_______,_______,
@@ -196,8 +142,3 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
 };
-
-// DPI setting
-void keyboard_post_init_user(void) {
-    pointing_device_set_cpi(500);
-}

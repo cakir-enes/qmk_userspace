@@ -43,7 +43,7 @@ enum ergotravel_layers {
 #define VERTICAL_PIPE RALT(KC_EQL)
 #define BACKTICK RALT(KC_BSLS)
 #define TILDE RALT(KC_RBRC)
-#define NUMBER_SIGN RALT(KC_3)
+#define HASHTAG RALT(KC_3)
 #define AT_SIGN RALT(KC_Q)
 #define LOCKSCREEN LCTL(LSFT(KC_PWR)) // Screen Lock shortcut for OSX
 
@@ -139,7 +139,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_RAISE] = LAYOUT(
     KC_GRV,  KC_1, KC_2, KC_3, KC_4, KC_5, KC_VOLU,                   /*|*/       KC_MPLY, KC_6, KC_7, KC_8, KC_9, KC_0, KC_BSPC,
     KC_DEL, RGB_MOD, RGB_VAI, RGB_SAI, RGB_HUI, _______,  KC_VOLD,    /*|*/       KC_MNXT, KC_MPRV, KC_MINS, KC_EQL, BACKSLASH, VERTICAL_PIPE, KC_BSLS,
-    _______, RGB_RMOD, RGB_VAD, RGB_SAD, RGB_HUD, _______,  KC_MUTE,  /*|*/       KC_MSTP, _______, NUMBER_SIGN, KC_NUBS, TILDE, BACKTICK, KC_GRV,
+    _______, RGB_RMOD, RGB_VAD, RGB_SAD, RGB_HUD, _______,  KC_MUTE,  /*|*/       KC_MSTP, _______, HASHTAG, KC_NUBS, TILDE, BACKTICK, KC_GRV,
     _______, RGB_TOG, BL_STEP, _______, _______, _______,             /*|*/           KC_BSPC, _______, KC_MNXT, KC_VOLD, KC_VOLU, KC_MPLY
   ),
 
