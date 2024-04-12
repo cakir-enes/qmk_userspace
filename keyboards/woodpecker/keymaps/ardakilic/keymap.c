@@ -91,9 +91,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------| |------+------+------+------+------+------|
  * | Tab  |  Q   |  W   |  E   |  R   |  T   | |  Y   |  U   |  I   |  O   |  P   | Del  |
  * |------+------+------+------+------+------| |------+------+------+------+------+------|
- * |NpdEsc|  A   |  S   |  D   |  F   |  G   | |  H   |  J   |  K   |  L   |  Ş   |  İ   |
+ * |NpdEsc|  A   |  S   |  D   | F [MSBT1] G | | H [MSBT1] J |  K   |  L   |  Ş   |  İ   |
  * |------+------+------+------+------+------| |------+------+------+------+------+------|
- * | LSFT |  Z   |  X   |  C   |  V   |  B   | |  N   |  M   |  Ö   |  Ç   |  .   |SftEnt|
+ * | LSFT |  Z   |  X   |  C   | V [MSBT2] B | | N [MSBT2] M |  Ö   |  Ç   |  .   |SftEnt|
  * |------+------+------+------+------+------| |------+------+------+------+------+------|
  * | Ctrl |Adj|<>| Win  | Alt  |Lowr|,|Space | |Space | AltGR| Left | Down |  Up  | Rght |
  * `-----------------------------------------' `-----------------------------------------'
@@ -117,7 +117,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------| |------+------+------+------+------+------|
  * |      |      |      |      |      |      | |      | "$"  |  "{" |  "}" |  <   |  ">" |
  * |------+------+------+------+------+------| |------+------+------+------+------+------|
- * |      |      |      |      |      | Entr | | BkSp |      |  "[" |  "]" |  '   |  "   |
+ * |      |      |      |      |==XX==| Entr | | BkSp |      |  "[" |  "]" |  '   |  "   |
  * `-----------------------------------------' `-----------------------------------------'
  */
 [_LOWER] = LAYOUT_woodpecker_grid(
@@ -136,7 +136,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------| |------+------+------+------+------+------|
  * |      | ACL0 |L-clck|  Up  |R-clck|Scrl U| |      |   7  |   8  |   9  |   +  |  =   |
  * |------+------+------+------+------+------| |------+------+------+------+------+------|
- * |      | ACL1 | Left | Down |Right |Scrl D| |      |   4  |   5  |   6  |   +  |  ,   |
+ * |==XX==| ACL1 | Left | Down |Right |Scrl D| |      |   4  |   5  |   6  |   +  |  ,   |
  * |------+------+------+------+------+------| |------+------+------+------+------+------|
  * |      | ACL2 | VOLU | PREV |PAUSE | NEXT | |      |   1  |   2  |   3  |Enter |      |
  * |------+------+------+------+------+------| |------+------+------+------+------+------|
@@ -153,7 +153,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Adjust
  * ,-----------------------------------------. ,-----------------------------------------.
- * |EepRST| Reset|      |      |      |      | | macOS|      |      |      |      |LckOSX|
+ * |EepRST|BotLdr| Debug|Reboot|      |      | | macOS|      |      |      |      |LckOSX|
  * |------+------+------+------+------+------| |------+------+------+------+------+------|
  * |      |      |      |      |      |      | |      |      |      |      |      |      |
  * |------+------+------+------+------+------| |------+------+------+------+------+------|
@@ -161,11 +161,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------| |------+------+------+------+------+------|
  * |CpsLck|      |      |      |      |      | |      |      |      |      |      |      |
  * |------+------+------+------+------+------| |------+------+------+------+------+------|
- * |      |      |      |      |      |      | |      |      |      |      |      |      |
+ * |      |==XX==|      |      |      |      | |      |      |      |      |      |      |
  * `-----------------------------------------' `-----------------------------------------'
  */
 [_ADJUST] = LAYOUT_woodpecker_grid(
-    EE_CLR,QK_BOOT,_______,_______,_______,_______,     /*|*/   TG(_MAC),_______,_______,_______,_______,LOCKSCREEN,
+    EE_CLR,QK_BOOT,DB_TOGG, QK_RBT,_______,_______,     /*|*/   TG(_MAC),_______,_______,_______,_______,LOCKSCREEN,
     _______,_______,_______,_______,_______,_______,    /*|*/   _______,_______,_______,_______,_______,_______,
     _______,_______,_______,_______,_______,_______,    /*|*/   _______,_______,_______,_______,_______,_______,
     KC_CAPS,_______,_______,_______,_______,_______,    /*|*/   _______,_______,_______,_______,_______,_______,
@@ -175,7 +175,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* MAC
  * This layout toggles Win/CMD and Left Alt keys's positions for Win and Mac compatibility
  * ,-----------------------------------------. ,-----------------------------------------.
- * |      |      |      |      |      |      | |      |      |      |      |      |      |
+ * |      |      |      |      |      |      | |==XX==|      |      |      |      |      |
  * |------+------+------+------+------+------| |------+------+------+------+------+------|
  * |      |      |      |      |      |      | |      |      |      |      |      |      |
  * |------+------+------+------+------+------| |------+------+------+------+------+------|
@@ -197,7 +197,33 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 };
 
+#ifdef POINTING_DEVICE_DRIVER
 // DPI setting
 void keyboard_post_init_user(void) {
     pointing_device_set_cpi(500);
 }
+#endif
+
+// Combo keys
+// Can be used with modifier and layer toggle keys
+// https://github.com/qmk/qmk_firmware/pull/8591#issuecomment-976019486
+enum combos {
+  C_LEFT_MOUSE_BTN_1,
+  C_LEFT_MOUSE_BTN_2,
+  C_RIGHT_MOUSE_BTN_1,
+  C_RIGHT_MOUSE_BTN_2,
+};
+
+const uint16_t PROGMEM c_left_mouse_btn_1_combo[] = {KC_F, KC_G, COMBO_END};
+const uint16_t PROGMEM c_left_mouse_btn_2_combo[] = {KC_H, KC_J, COMBO_END};
+const uint16_t PROGMEM c_right_mouse_btn_1_combo[] = {KC_V, KC_B, COMBO_END};
+const uint16_t PROGMEM c_right_mouse_btn_2_combo[] = {KC_N, KC_M, COMBO_END};
+
+const uint16_t PROGMEM c_left_layer_enter_combo[] = {KC_F, KC_G, COMBO_END};
+combo_t key_combos[] = {
+    [C_LEFT_MOUSE_BTN_1] = COMBO(c_left_mouse_btn_1_combo, KC_BTN1),
+    [C_LEFT_MOUSE_BTN_2] = COMBO(c_left_mouse_btn_2_combo, KC_BTN1),
+    [C_RIGHT_MOUSE_BTN_1] = COMBO(c_right_mouse_btn_1_combo, KC_BTN2),
+    [C_RIGHT_MOUSE_BTN_2] = COMBO(c_right_mouse_btn_2_combo, KC_BTN2),
+};
+// END Combo keys
