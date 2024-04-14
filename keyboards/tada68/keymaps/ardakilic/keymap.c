@@ -1,9 +1,9 @@
 #include QMK_KEYBOARD_H
 
-//KC_NONUS_BACKSLASH (\|) is equivalent to ["é] key in Turkish keyboards.
-//KC_GRV (~ `) is equivalent to [<>|] key in Turkish keyboards.
-//I've put grave to bottom, and nonUS backslash to top to make it more similar to Turkish layout.  ["é] key is more above than [<>|] key.
-//Default top right button was KC_GRV (~ `) (Grave key) even if it looks like Tilde key.
+// KC_NONUS_BACKSLASH (\|) is equivalent to ["é] key in Turkish keyboards.
+// KC_GRV (~ `) is equivalent to [<>|] key in Turkish keyboards.
+// I've put grave to bottom, and nonUS backslash to top to make it more similar to Turkish layout.  ["é] key is more above than [<>|] key.
+// Default top right button was KC_GRV (~ `) (Grave key) even if it looks like Tilde key.
 
 // Each layer gets a name for readability, which is then used in the keymap matrix below.
 // The underscores don't mean anything - you can have a layer called STUFF or any other name.
@@ -34,7 +34,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TAB,  KC_Q,   KC_W,   KC_E,   KC_R,   KC_T,   KC_Y,   KC_U,   KC_I,   KC_O,   KC_P,   KC_LBRC, KC_RBRC,KC_BSLS,KC_DEL,
   KC_CAPS, KC_A,   KC_S,   KC_D,   KC_F,   KC_G,   KC_H,   KC_J,   KC_K,   KC_L,   KC_SCLN,KC_QUOT,         KC_ENT,KC_NUBS,
   KC_LSFT,         KC_Z,   KC_X,   KC_C,   KC_V,   KC_B,   KC_N,   KC_M,   KC_COMM,KC_DOT, KC_SLSH,   KC_RSFT,KC_UP,KC_GRV,
-  KC_LCTL,KC_LGUI,LM(_LA, MOD_LALT),               KC_SPC,                  KC_RGUI,MO(_FL),KC_RALT, KC_LEFT,KC_DOWN,KC_RGHT),
+  KC_LCTL,KC_LGUI,LM(_LA, MOD_LALT),               KC_SPC,                  KC_RGUI,MO(_FL),KC_RALT, KC_LEFT,KC_DOWN,KC_RGHT
+),
 
   /* Keymap _FL: Function Layer
    * ,----------------------------------------------------------------.
@@ -54,7 +55,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______,_______,_______,_______,_______,_______,_______,_______,TG(_MAC),_______,KC_PSCR,_______,_______,_______,KC_HOME,
   _______,_______,_______,_______,_______,_______,_______,KC_MPRV,KC_MPLY,KC_MNXT,_______,_______,        _______,KC_END,
   _______,_______,_______,BL_DOWN,BL_TOGG,BL_UP,  _______,KC_MUTE,KC_VOLD,KC_VOLU,_______,_______,_______,_______,
-  _______,_______,_______,                 _______,               _______,_______,_______,_______,_______,_______),
+  _______,_______,_______,                 _______,               _______,_______,_______,_______,_______,_______
+  ),
 
 
   /* Keymap _MAC: Mac Layer
@@ -63,9 +65,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |----------------------------------------------------------------|
    * |     |   |   |   |   |   |   |   |   |   |   |   |   |     |    |
    * |----------------------------------------------------------------|
-   * |      |   |   |   |   |   |   |   |   |   |   |   |        |    |
+   * |      |   |   |   |   |   |   |   |   |   |   |   |        | <  |
    * |----------------------------------------------------------------|
-   * |        |   |   |   |   |   |   |   |   |   |   |      |   |    |
+   * |        |   |   |   |   |   |   |   |   |   |   |      |   | "  |
    * |----------------------------------------------------------------|
    * |Ctrl|Alt |Win |                       |Win |   |Alt|   |   |    |
    * `----------------------------------------------------------------'
@@ -73,9 +75,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_MAC] = LAYOUT_ansi(
   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_PWR, \
   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
-  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,      _______,     _______, \
-  _______,          _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
-  KC_LCTL, KC_LALT, KC_LGUI,                        _______,                       KC_RGUI, _______, KC_RALT, _______, _______, _______),
+  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,      _______,     KC_GRV, \
+  _______,          _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_NONUS_BACKSLASH, \
+  KC_LCTL, KC_LALT, KC_LGUI,                        _______,                       KC_RGUI, _______, KC_RALT, _______, _______, _______
+),
 
   /* Keymap _LA: Left Alt Layer - LALT-4 maps to LALT-F4 so I can quit apps
    * ,----------------------------------------------------------------.
@@ -95,7 +98,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,      _______,     _______, \
   _______,          _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
-  _______, _______, _______,                        _______,                       _______, _______, _______, _______, _______, _______),
+  _______, _______, _______,                        _______,                       _______, _______, _______, _______, _______, _______
+),
 
 
   /* Keymap _NUM: Numpad Layer
@@ -116,7 +120,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TAB,KC_NUM_LOCK, KC_UP,_______,_______, _______,KC_P4,KC_P5,KC_P6,_______,_______,KC_PSLS,KC_PAST, _______,_______, \
   TG(_NUM), KC_LEFT, KC_DOWN, KC_RIGHT,_______,_______,KC_P1,KC_P2,KC_P3,_______,_______,_______, KC_KP_ENTER,KC_PRINT_SCREEN, \
   KC_LSFT, KC_Z, KC_X, KC_C, KC_V,_______, KC_PDOT, KC_PDOT, KC_PDOT,_______,_______,_______, KC_MS_U, KC_BTN2, \
-  KC_LCTL, KC_LGUI, KC_LALT,KC_P0,_______,_______,KC_BTN1,KC_MS_L,KC_MS_D, KC_MS_R),
+  KC_LCTL, KC_LGUI, KC_LALT,KC_P0,_______,_______,KC_BTN1,KC_MS_L,KC_MS_D, KC_MS_R
+),
 
 
 };

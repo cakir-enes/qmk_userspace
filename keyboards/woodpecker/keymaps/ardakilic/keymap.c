@@ -16,6 +16,17 @@
 
 #include QMK_KEYBOARD_H
 
+enum woodpecker_layers {
+  _QWERTY = 0,
+  _LOWER,
+  // _RAISE,
+  _NUMPAD,
+  _ADJUST,
+  // _SPACE,
+  // _SODA,
+  _MAC
+};
+
 // KC_NONUS_BACKSLASH (\|) is equivalent to [<>|] key in Turkish Windows keyboards.
 // KC_GRV (~ `) is equivalent to ["é] key in Turkish Windows keyboards.
 // KC_SCLN is Turkish s [şŞ] key
@@ -71,17 +82,6 @@ const uint32_t PROGMEM unicode_map[] = {
 // clang-format on
 */
 
-enum lumberjack_layers {
-  _QWERTY = 0,
-  _LOWER,
-  // _RAISE,
-  _NUMPAD,
-  _ADJUST,
-  // _SPACE,
-  // _SODA,
-  _MAC
-};
-
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -124,10 +124,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,KC_F1,KC_F2,KC_F3,KC_F4,KC_F5,              /*|*/   _______,_______,BACKSLASH,VERTICAL_PIPE,KC_MINS,KC_EQL,
     _______,KC_F6,KC_F7,KC_F8,KC_F9,KC_F10,             /*|*/   _______,HASHTAG,KC_GRV,RALT(KC_LBRC),RALT(KC_RBRC),LSFT(KC_0),
     _______,KC_F11,KC_F12,_______,_______,_______,      /*|*/   KC_MINS,KC_UNDS,BACKTICK,KC_LBRC,KC_RBRC,KC_PLUS,
-    _______,_______,_______,_______,_______,_______,    /*|*/   _______,DOLLAR_SIGN,CURLY_OPEN,CURLY_CLOSE,KC_NONUS_BACKSLASH,LSFT(KC_NONUS_BACKSLASH),
+    _______,_______,_______,_______,_______,_______,    /*|*/   _______,DOLLAR_SIGN,CURLY_OPEN,CURLY_CLOSE,KC_NONUS_BACKSLASH, RALT(KC_1),
     _______,_______,_______,_______,_______,KC_ENT,     /*|*/   KC_BSPC,_______,SQUARE_OPEN,SQUARE_CLOSE,LSFT(KC_2),KC_GRV
 ),
-
 
 /* Numpad & Mouse
  * KC_PDOT is comma on the Turkish layout ¯\_(ツ)_/¯
@@ -187,11 +186,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------' `-----------------------------------------'
  */
 [_MAC] = LAYOUT_woodpecker_grid(
-    _______,_______,_______,_______,_______,_______,    /*|*/   _______,_______,_______,_______,_______,_______,
-    _______,_______,_______,_______,_______,_______,    /*|*/   _______,_______,_______,_______,_______,_______,
-    _______,_______,_______,_______,_______,_______,    /*|*/   _______,_______,_______,_______,_______,_______,
-    _______,_______,_______,_______,_______,_______,    /*|*/   _______,_______,_______,_______,_______,_______,
-    _______,_______,KC_LALT,KC_LGUI,_______,_______,    /*|*/   _______,_______,_______,_______,_______,_______
+    _______,_______,_______,_______,_______,_______,     /*|*/   _______,_______,_______,_______,_______,_______,
+    _______,_______,_______,_______,_______,_______,                /*|*/   _______,_______,_______,_______,_______,_______,
+    _______,_______,_______,_______,_______,_______,                /*|*/   _______,_______,_______,_______,_______,_______,
+    _______,_______,_______,_______,_______,_______,                /*|*/   _______,_______,_______,_______,_______,_______,
+    _______,_______,KC_LALT,KC_LGUI,_______,_______,                /*|*/   _______,_______,_______,_______,_______,_______
 )
 
 
@@ -227,3 +226,30 @@ combo_t key_combos[] = {
     [C_RIGHT_MOUSE_BTN_2] = COMBO(c_right_mouse_btn_2_combo, KC_BTN2),
 };
 // END Combo keys
+
+
+// Fix Windows and MacOS inconsistency between lower than and greater than keys on Turkish layout
+// Grave and Non US Backslash keys are swapped on Turkish layout on Windows and MacOS
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  if(IS_LAYER_ON(_MAC)) {
+    switch (keycode) {
+      case KC_NONUS_BACKSLASH:
+        if (record->event.pressed) {
+            register_code(KC_GRV);
+        } else {
+            unregister_code(KC_GRV);
+        }
+        return false; // Skip all further processing of this key
+      case KC_GRV:
+        if (record->event.pressed) {
+            register_code(KC_NONUS_BACKSLASH);
+        } else {
+            unregister_code(KC_NONUS_BACKSLASH);
+        }
+        return false; // Skip all further processing of this key
+      default:
+        return true; // Process all other keycodes normally
+    }
+  }
+  return true; // Process all other keycodes normally
+}

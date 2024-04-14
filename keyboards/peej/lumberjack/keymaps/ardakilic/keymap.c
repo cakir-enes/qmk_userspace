@@ -16,7 +16,6 @@
 
 #include QMK_KEYBOARD_H
 
-
 // KC_NONUS_BACKSLASH (\|) is equivalent to [<>|] key in Turkish Windows keyboards.
 // KC_GRV (~ `) is equivalent to ["é] key in Turkish Windows keyboards.
 // KC_SCLN is Turkish s [şŞ] key
@@ -104,7 +103,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_GRV,KC_1,KC_2,KC_3,KC_4,KC_5,                    /*|*/   KC_6,KC_7,KC_8,KC_9,KC_0,KC_BSPC,
     KC_TAB,KC_Q,KC_W,KC_E,KC_R,KC_T,                    /*|*/   KC_Y,KC_U,KC_I,KC_O,KC_P,KC_DEL,
     LT(_NUMPAD, KC_ESC),KC_A,KC_S,KC_D,KC_F,KC_G,       /*|*/   KC_H,KC_J,KC_K,KC_L,KC_SCLN,KC_QUOT,
-    KC_LSFT,KC_Z,KC_X,KC_C,KC_V,KC_B,           /*|*/   KC_N,KC_M,KC_COMM,KC_DOT,KC_SLSH,SC_SENT,
+    KC_LSFT,KC_Z,KC_X,KC_C,KC_V,KC_B,                   /*|*/   KC_N,KC_M,KC_COMM,KC_DOT,KC_SLSH,SC_SENT,
     KC_LCTL,LT(_ADJUST,KC_NONUS_BACKSLASH),KC_LGUI,KC_LALT,LT(_LOWER,KC_BSLS),KC_SPC, /*|*/ KC_SPC,KC_RALT,KC_LEFT,KC_DOWN,KC_UP,KC_RGHT
 ),
 
@@ -126,8 +125,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,KC_F1,KC_F2,KC_F3,KC_F4,KC_F5,              /*|*/   _______,_______,BACKSLASH,VERTICAL_PIPE,KC_MINS,KC_EQL,
     _______,KC_F6,KC_F7,KC_F8,KC_F9,KC_F10,             /*|*/   _______,HASHTAG,KC_GRV,RALT(KC_LBRC),RALT(KC_RBRC),LSFT(KC_0),
     _______,KC_F11,KC_F12,_______,_______,_______,      /*|*/   KC_MINS,KC_UNDS,BACKTICK,KC_LBRC,KC_RBRC,KC_PLUS,
-    _______,_______,_______,_______,_______,_______,    /*|*/   _______,DOLLAR_SIGN,CURLY_OPEN,CURLY_CLOSE,KC_NONUS_BACKSLASH,LSFT(KC_NONUS_BACKSLASH),
-    _______,_______,_______,_______,_______,KC_ENT,     /*|*/   KC_BSPC,_______,SQUARE_OPEN,SQUARE_CLOSE,LSFT(KC_2),KC_GRV
+    _______,_______,_______,_______,_______,_______,    /*|*/   _______,DOLLAR_SIGN,CURLY_OPEN,CURLY_CLOSE,KC_NONUS_BACKSLASH, RALT(KC_1),
+    _______,_______,_______,_______,_______,KC_ENT,     /*|*/   KC_BSPC,_______,SQUARE_OPEN,SQUARE_CLOSE,LSFT(KC_2), KC_GRV
 ),
 
 
@@ -167,17 +166,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------' `-----------------------------------------'
  */
 [_ADJUST] = LAYOUT_ortho_5x12(
-    QK_CLEAR_EEPROM,QK_BOOT,_______,_______,_______,_______,     /*|*/   TG(_MAC),_______,_______,_______,_______,LOCKSCREEN,
-    _______,_______,_______,_______,_______,_______,    /*|*/   _______,_______,_______,_______,_______,_______,
-    _______,_______,_______,_______,_______,_______,    /*|*/   _______,_______,_______,_______,_______,_______,
-    KC_CAPS,_______,_______,_______,_______,_______,    /*|*/   _______,_______,_______,_______,_______,_______,
-    _______,_______,_______,_______,_______,_______,    /*|*/   _______,_______,_______,_______,_______,_______
+    QK_CLEAR_EEPROM,QK_BOOT,_______,_______,_______,_______,    /*|*/   TG(_MAC),_______,_______,_______,_______,LOCKSCREEN,
+    _______,_______,_______,_______,_______,_______,            /*|*/   _______,_______,_______,_______,_______,_______,
+    _______,_______,_______,_______,_______,_______,            /*|*/   _______,_______,_______,_______,_______,_______,
+    KC_CAPS,_______,_______,_______,_______,_______,            /*|*/   _______,_______,_______,_______,_______,_______,
+    _______,_______,_______,_______,_______,_______,            /*|*/   _______,_______,_______,_______,_______,_______
 ),
 
 /* MAC
  * This layout toggles Win/CMD and Left Alt keys's positions for Win and Mac compatibility
+ * This layout also fixes some inconsistent keys between Windows and Mac
  * ,-----------------------------------------. ,-----------------------------------------.
- * |      |      |      |      |      |      | |      |      |      |      |      |      |
+ * |      |      |      |      |      |      | |==XX==|      |      |      |      |      |
  * |------+------+------+------+------+------| |------+------+------+------+------+------|
  * |      |      |      |      |      |      | |      |      |      |      |      |      |
  * |------+------+------+------+------+------| |------+------+------+------+------+------|
@@ -189,12 +189,37 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------' `-----------------------------------------'
  */
 [_MAC] = LAYOUT_ortho_5x12(
-    _______,_______,_______,_______,_______,_______,    /*|*/   _______,_______,_______,_______,_______,_______,
-    _______,_______,_______,_______,_______,_______,    /*|*/   _______,_______,_______,_______,_______,_______,
-    _______,_______,_______,_______,_______,_______,    /*|*/   _______,_______,_______,_______,_______,_______,
-    _______,_______,_______,_______,_______,_______,    /*|*/   _______,_______,_______,_______,_______,_______,
-    _______,_______,KC_LALT,KC_LGUI,_______,_______,    /*|*/   _______,_______,_______,_______,_______,_______
+    _______,_______,_______,_______,_______,_______,                /*|*/   _______,_______,_______,_______,_______,_______,
+    _______,_______,_______,_______,_______,_______,                /*|*/   _______,_______,_______,_______,_______,_______,
+    _______,_______,_______,_______,_______,_______,                /*|*/   _______,_______,_______,_______,_______,_______,
+    _______,_______,_______,_______,_______,_______,                /*|*/   _______,_______,_______,_______,_______,_______,
+    _______,_______,KC_LALT,KC_LGUI,_______,_______,                /*|*/   _______,_______,_______,_______,_______,_______
 )
 
-
 };
+
+// Fix Windows and MacOS inconsistency between lower than and greater than keys on Turkish layout
+// Grave and Non US Backslash keys are swapped on Turkish layout on Windows and MacOS
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  if(IS_LAYER_ON(_MAC)) {
+    switch (keycode) {
+      case KC_NONUS_BACKSLASH:
+        if (record->event.pressed) {
+            register_code(KC_GRV);
+        } else {
+            unregister_code(KC_GRV);
+        }
+        return false; // Skip all further processing of this key
+      case KC_GRV:
+        if (record->event.pressed) {
+            register_code(KC_NONUS_BACKSLASH);
+        } else {
+            unregister_code(KC_NONUS_BACKSLASH);
+        }
+        return false; // Skip all further processing of this key
+      default:
+        return true; // Process all other keycodes normally
+    }
+  }
+  return true; // Process all other keycodes normally
+}
