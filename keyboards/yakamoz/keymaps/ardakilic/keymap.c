@@ -21,9 +21,9 @@ enum yakamoz_layers {
   _QWERTY,
   _LOWER,
   _RAISE,
-  _ADJUST,
-  _SPACE,
+  // _ADJUST,
   _SODA,
+  _SPACE,
   _NUMPAD
 };
 
@@ -223,15 +223,12 @@ bool render_status(void) {
             oled_write_P(PSTR("RAISE\n"), false);
             break;
         case 3:
-            oled_write_P(PSTR("ADJUST\n"), false);
+            oled_write_P(PSTR("SODA\n"), false);
             break;
         case 4:
             oled_write_P(PSTR("SPACE\n"), false);
             break;
         case 5:
-            oled_write_P(PSTR("SODA\n"), false);
-            break;
-        case 6:
             oled_write_P(PSTR("NUMPAD\n"), false);
             break;
         default:
