@@ -7,3 +7,7 @@ COMBO_ENABLE = yes
 
 # Board is set to RP2040 already at the fork
 # CONVERT_TO = elite_pi
+
+
+# Enable OS Detection
+OS_DETECTION_ENABLE = yes

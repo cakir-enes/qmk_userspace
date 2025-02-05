@@ -253,3 +253,29 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   }
   return true; // Process all other keycodes normally
 }
+
+
+// OS Detection
+#define OS_DETECTION_KEYBOARD_RESET
+#define OS_DETECTION_SINGLE_REPORT
+bool process_detected_host_os_kb(os_variant_t detected_os) {
+    if (!process_detected_host_os_user(detected_os)) {
+        return false;
+    }
+    switch (detected_os) {
+        case OS_MACOS:
+          if (!IS_LAYER_ON(_MAC)) {
+            layer_on(_MAC);
+          }
+          break;
+        case OS_WINDOWS:
+            if (IS_LAYER_ON(_MAC)) {
+              layer_off(_MAC);
+            }
+            break;
+        case OS_UNSURE:
+            break;
+    }
+    
+    return true;
+}
