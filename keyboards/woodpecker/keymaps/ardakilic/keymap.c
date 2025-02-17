@@ -240,9 +240,9 @@ void toggle_infinite_mouse_movement(void) {
     if (moving_mouse) {
         while (moving_mouse) {
             tap_code(KC_MS_L); // Move cursor 1px left
-            wait_ms(500);
+            wait_ms(5000);
             tap_code(KC_MS_R); // Move cursor 1px right
-            wait_ms(500);
+            wait_ms(5000);
         }
     }
 }
