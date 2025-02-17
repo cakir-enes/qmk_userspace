@@ -233,17 +233,17 @@ combo_t key_combos[] = {
 
 // Auto Moving Mouse
 bool moving_mouse = false;
-
 void toggle_infinite_mouse_movement(void) {
     moving_mouse = !moving_mouse;
+}
+void loop_task_user(void) {
+    static uint32_t last_time = 0;
 
-    if (moving_mouse) {
-        while (moving_mouse) {
-            tap_code(KC_MS_L); // Move cursor 1px left
-            wait_ms(5000);
-            tap_code(KC_MS_R); // Move cursor 1px right
-            wait_ms(5000);
-        }
+    if (moving_mouse && timer_elapsed32(last_time) > 5000) {
+        tap_code(KC_MS_L);
+        wait_ms(500);
+        tap_code(KC_MS_R);
+        last_time = timer_read32();
     }
 }
 // END Auto Moving Mouse
