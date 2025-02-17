@@ -47,6 +47,10 @@ enum woodpecker_layers {
 #define HASHTAG RALT(KC_3)
 #define LOCKSCREEN LCTL(LSFT(KC_PWR)) // Screen Lock shortcut for OSX
 
+enum custom_keycodes {
+    MOUSE_INFINITE_TOGGLE = SAFE_RANGE
+};
+
 /*
 // Unicode Turkish characters, in case it's needed
 enum {
@@ -152,7 +156,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Adjust
  * ,-----------------------------------------. ,-----------------------------------------.
- * |EepRST|BotLdr| Debug|Reboot|      |      | | macOS|      |      |      |      |LckOSX|
+ * |EepRST|BotLdr| Debug|Reboot|      |      | | macOS|      |MsInfTg|     |      |LckOSX|
  * |------+------+------+------+------+------| |------+------+------+------+------+------|
  * |      |      |      |      |      |      | |      |      |      |      |      |      |
  * |------+------+------+------+------+------| |------+------+------+------+------+------|
@@ -164,7 +168,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------' `-----------------------------------------'
  */
 [_ADJUST] = LAYOUT_woodpecker_grid(
-    EE_CLR,QK_BOOT,DB_TOGG, QK_RBT,_______,_______,     /*|*/   TG(_MAC),_______,_______,_______,_______,LOCKSCREEN,
+    EE_CLR,QK_BOOT,DB_TOGG, QK_RBT,_______,_______,     /*|*/   TG(_MAC),_______,MOUSE_INFINITE_TOGGLE,_______,_______,LOCKSCREEN,
     _______,_______,_______,_______,_______,_______,    /*|*/   _______,_______,_______,_______,_______,_______,
     _______,_______,_______,_______,_______,_______,    /*|*/   _______,_______,_______,_______,_______,_______,
     KC_CAPS,_______,_______,_______,_______,_______,    /*|*/   _______,_______,_______,_______,_______,_______,
@@ -227,6 +231,23 @@ combo_t key_combos[] = {
 };
 // END Combo keys
 
+// Auto Moving Mouse
+bool moving_mouse = false;
+
+void toggle_infinite_mouse_movement(void) {
+    moving_mouse = !moving_mouse;
+
+    if (moving_mouse) {
+        while (moving_mouse) {
+            tap_code(KC_MS_L); // Move cursor 1px left
+            wait_ms(500);
+            tap_code(KC_MS_R); // Move cursor 1px right
+            wait_ms(500);
+        }
+    }
+}
+// END Auto Moving Mouse
+
 
 // Fix Windows and MacOS inconsistency between lower than and greater than keys on Turkish layout
 // Grave and Non US Backslash keys are swapped on Turkish layout on Windows and MacOS
@@ -247,6 +268,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             unregister_code(KC_NONUS_BACKSLASH);
         }
         return false; // Skip all further processing of this key
+      case MOUSE_INFINITE_TOGGLE:
+        if (record->event.pressed) {
+            toggle_infinite_mouse_movement();
+        }
+        return false;
       default:
         return true; // Process all other keycodes normally
     }
