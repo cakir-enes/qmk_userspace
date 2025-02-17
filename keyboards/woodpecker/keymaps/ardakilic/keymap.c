@@ -233,17 +233,16 @@ combo_t key_combos[] = {
 
 // Auto Moving Mouse
 bool moving_mouse = false;
+uint16_t last_mouse_move = 0;
 void toggle_infinite_mouse_movement(void) {
     moving_mouse = !moving_mouse;
 }
-void loop_task_user(void) {
-    static uint32_t last_time = 0;
-
-    if (moving_mouse && timer_elapsed32(last_time) > 5000) {
-        tap_code(KC_MS_L);
-        wait_ms(500);
-        tap_code(KC_MS_R);
-        last_time = timer_read32();
+void matrix_scan_user(void) {
+    if (moving_mouse && timer_elapsed(last_mouse_move) > 5000) {
+        tap_code(KC_MS_L);  // Move 1px left
+        wait_ms(10);
+        tap_code(KC_MS_R);  // Move 1px right
+        last_mouse_move = timer_read();  // Reset timer
     }
 }
 // END Auto Moving Mouse
@@ -272,7 +271,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         if (record->event.pressed) {
             toggle_infinite_mouse_movement();
         }
-        return false;
+        return false;  // Skip further processing for this key
       default:
         return true; // Process all other keycodes normally
     }
